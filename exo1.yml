@@ -1,0 +1,15 @@
+openapi: 3.0.3
+info: 
+  title: Ping Pong
+  version: 99.99.0
+path: 
+  /ping: 
+    get: 
+      response: 
+        200: 
+          description: pong
+          content: 
+            text/plain: 
+              schema: 
+                type: string
+                exemple: pong 
