@@ -5,11 +5,11 @@ info:
 path: 
   /ping: 
     get: 
-      response: 
+      responses: 
         200: 
           description: pong
           content: 
             text/plain: 
               schema: 
                 type: string
-                exemple: pong 
+                example: pong 
