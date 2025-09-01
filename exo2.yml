@@ -2,6 +2,8 @@ openapi: 3.0.3
 info: 
   title: Liste des utilisateurs
   version: 99.9.0
+servers: 
+  - url : https://localhost:800
 paths: 
   /users: 
     get: 

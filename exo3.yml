@@ -2,6 +2,8 @@ openapi: 3.0.3
 info: 
   title: Gestion de tâches
   version: 99.99.0
+servers: 
+  - url : https://localhost:800
 paths: 
   /tasks: 
     get: 
