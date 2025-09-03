@@ -13,12 +13,81 @@ paths:
           application/json: 
             schema: 
               type: array
-              example: 
+              items: 
                $ref: '#/components/schemas/Task'
     post: 
+      requestBody: 
+        content: 
+          application/json: 
+            schema: 
+              type: array
+              items:  
+                $ref: '#/components/schemas/Task'
       responses: 
         201: 
-
+          description: retourne la tâche créée
+          content: 
+            application/json: 
+              schema: 
+                type: array
+                items: 
+                  $ref: '#/components/schemas/Task'
+    delete: 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  taskIdentifier:
+                    type: integer
+      responses: 
+        200: 
+          description: tâche supprimée
+          content: 
+            application/json: 
+              schema: 
+                type: array
+                items:   
+                  $ref: '#/components/schemas/Task'                         
+  /tasks/{id} :
+    get: 
+      parameters: 
+        - in : path
+          name: id
+          schema: 
+            type: integer
+          required: true
+      responses: 
+        200: 
+          description: tâche retrouvée
+          content: 
+            application/json: 
+              schema: 
+                $ref: '#/components/schemas/Task'
+        404: 
+          description: tâche introuvable 
+          content: 
+            text/plain: 
+              schema: 
+                type: string
+                example: 404 not found
+    delete: 
+      parameters: 
+        - in : path
+          name: id
+          schema: 
+            type: integer
+          required: true
+      responses: 
+        200: 
+          description: tâche supprimée
+          content: 
+            application/json: 
+              schema: 
+                $ref: '#/components/schemas/Task'
 components: 
   shemas: 
     Task: 
