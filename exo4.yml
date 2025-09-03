@@ -1,0 +1,59 @@
+openapi: 3.0.3
+info: 
+  title: Gestion de tâches
+  version: 99.99.0
+servers: 
+  - url : https://localhost:800
+paths: 
+  /products: 
+    get: 
+      parameters: 
+        $ref: '#/components/parameters/limitParam'
+        $ref: '#/components/parameters/qParam'
+      responses: 
+        200: 
+          description: retourner une liste de produits 
+          content: 
+            application/json: 
+              schema: 
+                type: array
+                items: 
+                  $ref: '#/components/schemas/Product'
+              example: 
+                noProduct: 
+                  summary: résultat avec 0 produits
+                  value: []
+                multipleProduct: 
+                  summary: résultat avec plusieurs produits 
+                  value: 
+                    - name: brocolis
+                      expiration_datetime: 2025-09-12T00:00:00.004Z
+                      price: 3000.0
+components: 
+  parameters: 
+    limitParam: 
+      name: limit 
+      in: query
+      description: nombre maximum d'éléments
+      required: false
+      schema: 
+        type: integer
+    qParam:
+      name: q
+      in: query
+      description: terme de recherche
+      required: false
+      schema: 
+        type: string 
+  schemas: 
+    Product: 
+      type: object 
+      properties: 
+        name: 
+          type: string
+        expiration_datetime: 
+          type: string 
+          format: date-time
+        price: 
+          type: number 
+          format: float   
